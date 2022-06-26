@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.819608, 0, 1, 0.454902, 1, 0, 1, 0, 1, 0.882353, 1, 0.054902, 0, 1, 1, 1, 0, 0.984314, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+width = 10
+
+[node name="paddle_kbody" type="KinematicBody2D"]
+
+[node name="paddle_collisionshape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="paddle_sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 2, 20 )
+texture = SubResource( 4 )
