@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 
 export var vel = Vector2(1, 1)
-
+export var bounce_speed_scale = 1.10  # Vel increase on each bounce.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +23,7 @@ func _physics_process(delta: float):
 			var direction_vector: Vector2 =  towards - from
 			direction_vector = direction_vector.normalized()
 			print(vel)
+			print(vel.length())
 			print(direction_vector)
 			#direction_vector = direction_vector * vel.length()
 			#vel = vel.move_toward(direction_vector, delta)
@@ -30,4 +31,4 @@ func _physics_process(delta: float):
 			print(vel)
 		else:
 			vel = vel.bounce(collisionInfo.normal)
-
+		vel *= bounce_speed_scale	
