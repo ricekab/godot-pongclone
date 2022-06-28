@@ -6,7 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 
 export var ACCELERATION : float = 1.0
-export var velocity : float = 0.0
+var velocity : float = 0.0
 export var MAX_VELOCITY : float = 1.0
 
 export var DOWN_KEY = "ui_left"

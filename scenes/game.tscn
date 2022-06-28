@@ -17,14 +17,16 @@ position = Vector2( 60, 300 )
 rotation = 1.5708
 scale = Vector2( 5, 1 )
 script = ExtResource( 4 )
+ACCELERATION = 7.0
+MAX_VELOCITY = 15.0
 
 [node name="paddle_p2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 964, 300 )
 rotation = 1.5708
 scale = Vector2( 5, 1 )
 script = ExtResource( 4 )
-ACCELERATION = 5.0
-MAX_VELOCITY = 10.0
+ACCELERATION = 7.0
+MAX_VELOCITY = 15.0
 DOWN_KEY = "ui_up"
 UP_KEY = "ui_down"
 
