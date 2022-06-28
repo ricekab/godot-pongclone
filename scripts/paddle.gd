@@ -12,6 +12,7 @@ export var MAX_VELOCITY : float = 1.0
 export var DOWN_KEY = "ui_left"
 export var UP_KEY = "ui_right"
 
+const SLOWDOWN_FACTOR = 0.35  # "Drag" when no input is given.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,11 +21,15 @@ func _ready():
 
 func _physics_process(delta: float):
 	var direction = 0
+	var velocity_difference: float
 	if Input.is_action_pressed(UP_KEY):
 		direction = 1
 	if Input.is_action_pressed(DOWN_KEY):
 		direction = -1
-	var velocity_difference = ACCELERATION * direction * delta
+	if not direction:
+		velocity_difference = velocity * (ACCELERATION * SLOWDOWN_FACTOR) * delta * -1
+	else:
+		velocity_difference = ACCELERATION * direction * delta
 	velocity += velocity_difference
 	velocity = clamp(velocity, -1 * MAX_VELOCITY, MAX_VELOCITY)
 	var vel_vector = Vector2(0, velocity)
