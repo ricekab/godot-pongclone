@@ -12,7 +12,7 @@ var score_right = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	RNG.randomize()
 
 func _on_game_ui_btn_pressed():
 	_spawn_new_ball()
