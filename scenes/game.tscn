@@ -55,6 +55,7 @@ bounce_speed_scale = 1.15
 [node name="right_score_area" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1044, 4 )
 
+[connection signal="score_changed" from="." to="game_ui" method="_on_game_root_score_changed"]
 [connection signal="btn_pressed" from="game_ui" to="." method="_on_game_ui_btn_pressed"]
 [connection signal="body_entered" from="left_score_area" to="." method="_on_left_score_area_body_entered"]
 [connection signal="body_entered" from="right_score_area" to="." method="_on_right_score_area_body_entered"]

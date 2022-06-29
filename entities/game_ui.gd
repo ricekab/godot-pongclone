@@ -1,16 +1,12 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 signal btn_pressed
 
+onready var scoreLabel = $score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	scoreLabel.text = "0 - 0"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,3 +15,7 @@ func _ready():
 
 func _on_button_pressed():
 	emit_signal('btn_pressed')
+
+
+func _on_game_root_score_changed(left_score, right_score):
+	scoreLabel.text = "{0} - {1}".format([left_score, right_score])
