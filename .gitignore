@@ -1,2 +1,3 @@
 .import
-music/*
+music/*.import
+music/*.ogg
