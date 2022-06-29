@@ -20,9 +20,11 @@ func _on_game_ui_btn_pressed():
 func _spawn_new_ball():
 	var new_ball = Paddle.instance()
 	new_ball.set_script(BallScript)
-	new_ball.position = Vector2(400, 300)
-	var rand_x = RNG.randf_range(0.5, 1.0)
-	var rand_y = RNG.randf_range(-1.0, 1.0)
+	var rand_x = RNG.randf_range(300.0, 450.0)
+	var rand_y = RNG.randf_range(100.0, 500.0)
+	new_ball.position = Vector2(rand_x, rand_y)
+	rand_x = RNG.randf_range(0.5, 1.0)
+	rand_y = RNG.randf_range(-1.0, 1.0)
 	var random_vel_normalized = Vector2(rand_x, rand_y).normalized()
 	new_ball.vel = random_vel_normalized * 100.0  # Initial speed
 	new_ball.set_collision_mask(3)  # layer 1 + 2
@@ -33,11 +35,11 @@ func _on_left_score_area_body_entered(body):
 	score_right += 1
 	emit_signal("score_changed", score_left, score_right)
 	body.queue_free()
-	_spawn_new_ball()
+	call_deferred("_spawn_new_ball")
 
 
 func _on_right_score_area_body_entered(body: PhysicsBody2D):
 	score_left += 1
 	emit_signal("score_changed", score_left, score_right)
 	body.queue_free()
-	_spawn_new_ball()
+	call_deferred("_spawn_new_ball")
